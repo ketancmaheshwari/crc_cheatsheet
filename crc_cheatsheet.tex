@@ -1,0 +1,408 @@
+%---------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%---------------------------------------------------
+
+\documentclass[landscape,a0paper,fontscale=0.285]{baposter} % Adjust the font scale/size here
+\title{CRC Cheat Sheet}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{graphicx} % Required for including images
+\graphicspath{{figures/}} % Directory in which figures are stored
+
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{tabu}
+%\usepackage{hyperref}
+
+\usepackage{mathtools}
+%\usepackage{amsmath} % For typesetting math
+\usepackage{amssymb} % Adds new symbols to be used in math mode
+
+\usepackage{booktabs} % Top and bottom rules for tables
+\usepackage{enumitem} % Used to reduce itemize/enumerate spacing
+\usepackage{palatino} % Use the Palatino font
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+
+\usepackage{multicol} % Required for multiple columns
+\setlength{\columnsep}{1.5em} % Slightly increase the space between columns
+\setlength{\columnseprule}{0mm} % No horizontal rule between columns
+
+\usepackage{tikz} % Required for flow chart
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{shapes,arrows} % Tikz libraries required for the flow chart in the template
+
+\newcommand{\compresslist}{ % Define a command to reduce spacing within itemize/enumerate environments, this is used right after \begin{itemize} or \begin{enumerate}
+\setlength{\itemsep}{1pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+}
+
+\definecolor{lightblue}{rgb}{0.145,0.6666,1} % Defines the color used for content box headers
+\definecolor{pittblue}{RGB}{20,41,87} % Defines the color used for content box headers
+\definecolor{pittgold}{RGB}{205,184,125} % Defines the color used for content box headers
+
+\begin{document}
+
+\begin{poster}
+{
+ headerborder=closed, % Adds a border around the header of content boxes
+ colspacing=0.8em, % Column spacing
+ bgColorOne=white, % Background color for the gradient on the left side of the poster
+ bgColorTwo=white, % Background color for the gradient on the right side of the poster
+ borderColor=pittblue, % Border color
+ headerColorOne=pittblue, % Background color for the header in the content boxes (left side)
+ headerColorTwo=pittgold, % Background color for the header in the content boxes (right side)
+ headerFontColor=white, % Text color for the header text in the content boxes
+ boxColorOne=white, % Background color of the content boxes
+ textborder=roundedleft, % Format of the border around content boxes, can be: none, bars, coils, triangles, rectangle, rounded, roundedsmall, roundedright or faded
+ eyecatcher=true, % Set to false for ignoring the left logo in the title and move the title left
+ headerheight=0.1\textheight, % Height of the header
+ headershape=roundedright, % Specify the rounded corner in the content box headers, can be: rectangle, small-rounded, roundedright, roundedleft or rounded
+ headerfont=\Large\bf\textsc, % Large, bold and sans serif font in the headers of content boxes
+ %textfont={\setlength{\parindent}{1.5em}}, % Uncomment for paragraph indentation
+ linewidth=2pt % Width of the border lines around content boxes
+}
+%----------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------
+{\bf\textsc{CRC Cheat Sheet}\vspace{0.5em}} % Poster title
+{\textsc{\{ C R C \ \ \ \ \ C h e a t \ \ \ \ \ S h e e t\} \hspace{12pt}}}
+{\textsc{CRC Consultants \\ (University of Pittsburgh) \hspace{12pt}}} 
+
+%------------------------------------------------
+% ACCESS
+%------------------------------------------------
+\headerbox{Access}{name=access,column=0,row=0}{
+
+%--------------------------------------
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Request an Account}}
+\linebreak\\
+\texttt{http://core.sam.pitt.edu/apply}\\
+\linebreak
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Login}}
+HTC  \texttt{htc.sam.pitt.edu} \\
+SMP/OPA/NTA \texttt{h2p.crc.pitt.edu}\\ 
+\texttt{login0b.mpi.sam.pitt.edu}
+%--------------------------------------
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Storage}} 
+%Storage facilities
+ihome  \texttt{/ihome/grp} (backed up) \\
+mobydisk  \texttt{/mnt/mobydisk} (not backed up) \\
+ZFS  \texttt{/zfs1 \& /zfs2} (not backed up)
+%\vspace{1.0em} % When there are two boxes, some whitespace may need to be added if the one on the right has more content
+}
+
+%\headerbox{Common Commands}{name=introduction,column=1,row=0,bottomaligned=objectives}{
+\headerbox{Common Commands}{name=commoncommands, column=1,span=2, row=0}{
+%------
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Connect}}
+
+\texttt{ssh h2p.crc.pitt.edu}\\
+\texttt{ssh htc.sam.pitt.edu}\\
+\texttt{ssh login0b.mpi.sam.pitt.edu}\\
+%------
+
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Move Data}}
+\texttt{scp afile.tgz htc.sam.pitt.edu:\textasciitilde/} \hfill  \# copy from localhost to cluster \\
+\texttt{scp htc.sam.pitt.edu:\textasciitilde/afile.tgz .} \hfill  \# copy from cluster to localhost \\
+\texttt{rsync -aP \$HOME/src /zfs1/1/sam/ketan} \hfill  \#copy src to zfs using rsync
+
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - LMod: load and unload software}}
+\texttt{module spider fftw} \hfill  \# search for module named fftw \\
+\texttt{module avail}  \hfill  \# list available modules \\
+\texttt{module list}   \hfill  \# list currently loaded modules \\
+\texttt{module load compiler/python/2.7.10-Anaconda-2.3.0}   \hfill  \# load a module named anaconda\\
+\texttt{module purge} \hfill  \# unload all modules \\
+
+%------
+}
+
+%----------------------------------------------------------------
+%	Help
+%----------------------------------------------------------------
+\headerbox{Help}{name=help,column=3,span=1,row=0}{
+Does the FAQ answer your question?\\ \texttt{http://core.sam.pitt.edu/faqs}\\
+Search the website:\\ \texttt{http://core.sam.pitt.edu/search}
+%Seek help \\ 
+%\linebreak
+%% {lp{5.8cm}lp{1.0cm}|}
+%-----
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Submit Ticket}}
+\begin{enumerate}\compresslist
+\item Provide a descriptive, specific title
+\item Specify the cluster the ticket applies to
+\item Provide directory location if applicable
+\end{enumerate}
+\texttt{{\small core.sam.pitt.edu/node/add/support-ticket}}
+\linebreak\\
+%------
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Documentation}}
+\texttt{http://core.sam.pitt.edu/node/6}\\
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Consultants Expertise}}
+Kim Wong: Bio Simulation, Agent-based Modeling, Physics-based Modeling \\
+Fangping Mu: Bioinformatics, Computational Biology, Computational Genomics \\
+Barry Moore: Quantum Chemistry, HPC \\
+Ketan Maheshwari: GPU Computing, Scientific Workflows, HPC  \\
+Shervin Sammak: Turbulent Combustion, Fluid Dynamics
+%-----------------------------------
+}
+
+%----------------------------------------------------------------
+%	Software
+%----------------------------------------------------------------
+\headerbox{Software}{name=software,column=0,row=1, below=access}{
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Applications}}
+\begin{itemize}\compresslist
+\item Chemistry: $\text{NAMD}^{s}$, {\color{red}$\text{VASP}^{s}$}, $\text{Amber}^{g}$, {\color{red}$\text{Molpro}^{s}$}, {\color{red}$\text{Turbomole}^{s}$}, $\text{CP2K}^{s}$, {\color{red}$\text{Gaussian}^{s}$}
+\item Bio: $\text{CLCbio}^{h}$, $\text{galaxy}^{h}$
+\item Material Sci: {\color{red}Material Studio}, Westpa
+\end{itemize}
+
+%----Libraries and Programming-----------
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Libraries and Programming}}
+\begin{itemize}\compresslist
+\item Compilers: GCC, Intel
+\item Programming: Python, R, Java, Matlab
+\item Libraries: Boost, FFT, $\text{tensorflow}^{h,g}$, mkl, hdf5
+\end{itemize}
+
+%-------Others---------------------
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Others}}
+\begin{itemize}\compresslist
+\item Editors: vim, emacs, nano
+\item Debuggers: gdb, gprof
+\item Shells: bash, zsh
+\end{itemize}
+}
+
+%----------------------------------------------------------------
+%	Hardware
+%----------------------------------------------------------------
+\headerbox{Hardware}{name=hardware,column=1, span=2, row=1, below=commoncommands}{
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - SMP}}
+\begin{itemize}\compresslist
+\item 24 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell), 256 G RAM, 256 G SSD \& 1 T SSD, 10GigE
+\item 2 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell), 256 G RAM, 256 G SSD \& 3 T SSD, 10GigE
+\item 2 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell), 512 G RAM, 256 G SSD \& 3 T SSD, FDR Infiniband
+\item 1 node of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell), 256 G RAM, 256 G SSD \& 6 T NVMe, GigE
+\end{itemize}
+
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - OPA}}
+\begin{itemize}\compresslist
+%\item (IB) 32 nodes of 20-core Haswell (E5-2660 v3), 2.6 GHz (Haswell), 128 G RAM, 256 G SSD, FDR InfiniBand
+\item 96 nodes of 28-core Intel Xeon E5-2690 2.60 GHz (Broadwell), 64 G RAM, 256 G SSD, 100 Gb Omni-Path
+\item 8 nodes of Intel KNL
+\end{itemize}
+
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - HTC}}
+\begin{itemize}\compresslist
+\item 20 nodes of 16-core Intel Xeon E5-2630v3, 2.4GHz (Haswell-EP), 256 G RAM, 256 G SSD, FDR Infiniband
+\end{itemize}
+
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - NTA}}
+\begin{itemize}\compresslist
+\item 7 nodes with 4 NVIDIA Titan X GPGPUs/node
+\item 8 nodes with 4 NVIDIA GeForce GTX 1080 GPGPUs/node
+\item 1 node with 2 NVIDIA K40 GPGPUs
+\end{itemize}
+
+}
+\headerbox{Charging Policy}{name=method,column=3, below=help}{
+Users are charged in terms of Service Units (SU) which depend on both memory and CPU usage.
+Details coming soon.
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - CPU}}
+\linebreak \\
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Memory}}
+
+}
+
+\end{poster}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%    SECOND PAGE    %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{poster}
+{
+borderColor=pittblue, headerColorOne=pittblue, headerColorTwo=pittgold, headerborder=closed, colspacing=0.8em, bgColorOne=white, bgColorTwo=white, headerFontColor=white, boxColorOne=white, textborder=roundedleft, eyecatcher=true, headerheight=0.1\textheight, headershape=roundedright, headerfont=\Large\bf\textsc, linewidth=2pt 
+}
+%----------------------------------------------------------------
+%	TITLE SECTION 
+%----------------------------------------------------------------
+{\bf\textsc{CRC Cheat Sheet}\vspace{0.5em}} % Poster title
+{\textsc{\{ C R C \ \ \ \ \ C h e a t \ \ \ \ \ S h e e t\} \hspace{12pt}}}
+{\textsc{CRC Consultants \\ (University of Pittsburgh) \hspace{12pt}}} 
+
+\headerbox{Computation}{name=computation,column=0}{
+
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Scheduler}}
+CRC clusters use the SLURM scheduler. \\
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Job Management}}
+\texttt{sinfo} \#view info about nodes and partitions\\
+\texttt{sbatch job.sbatch}  \#submit a job \\
+\texttt{squeue -u \$(whoami)} \#check job status \\
+\texttt{scancel 12345} \#cancel job with id 12345\\
+\texttt{sshare} \#list the shares of associations\\
+\texttt{salloc} \#Obtain a Slurm job allocation \\
+\texttt{sprio 12345} \#view a job's priority\\
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Job Status Codes}}
+\texttt{PD} \dotfill  Pending \\
+\texttt{R}  \dotfill  Running \\
+\texttt{CA} \dotfill  Cancelled \\
+\texttt{F} \dotfill   Failed \\
+\texttt{CF} \dotfill   Configuring \\
+\texttt{TO} \dotfill   Timed Out \\
+\texttt{PR} \dotfill   Preempted \\
+\texttt{NF} \dotfill   Node Failed \\
+\texttt{S} \dotfill   Suspended \\
+\texttt{CD} \dotfill  Completed \\
+}
+
+\headerbox{Notes}{name=notes, below=computation, column=0,row=1}{
+\begin{itemize}\compresslist
+\item In software, superscripts indicate software availability over a cluster: h=HTC, s=SMP, g=GPU, o=OMP
+\item In software, items in {\color{red}red} indicate licensed software
+\end{itemize}
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Acronyms}}
+\texttt{HTC} \dotfill  High Throughput Computing\\
+\texttt{OPA} \dotfill  Omni-Path \\
+\texttt{IB FDR} \dotfill  InfiniBand Fourteen Data Rate\\
+\texttt{GPU} \dotfill  Graphics Processing Unit \\
+\texttt{SMP} \dotfill  Shared Memory Processing \\
+\texttt{SSD} \dotfill  Solid State Drive \\
+\texttt{NTA} \dotfill  Non-Traditional Architecture \\
+\texttt{NVMe} \dotfill  Non-volatile Memory express \\
+\texttt{ZFS} \dotfill  Zettabyte File System
+}
+
+%------------------------------------------------
+% Example SLURM Script
+%------------------------------------------------
+
+\headerbox{Example SLURM Scripts}{name=exampleslurm,column=1,span=2,row=0}{
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - for HTC}}
+\#!/bin/bash\\
+\#SBATCH -N 1 \# Ensure that all cores are on one machine\\
+\#SBATCH --job-name=abf5\\
+\#SBATCH --output=abf5.out\\
+\#SBATCH -t 3-00:00 \# Runtime in D-HH:MM\\
+\#SBATCH --cpus-per-task=16 \# Request that ncpus be allocated per process.\\
+\#SBATCH --mem=230g \# Memory pool for all cores (see also --mem-per-cpu)\\
+module load HISAT2/2.0.3-beta\\
+hisat2-build -p 16 --ss hg38.ss --exon hg38.exon hg38.fa hg38\_tran\\
+
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - for SMP/MPI/OPA}}
+\#!/bin/bash\\
+\#SBATCH –job-name=p7n64\\
+\#SBATCH --nodes=2\\
+\#SBATCH --tasks=56\\
+\#SBATCH --cpus-per-task=1\\
+\#SBATCH --partition=opa\\
+\#SBATCH --cluster=dist\\
+\#SBATCH --mail-user=shs159@pitt.edu\\
+\#SBATCH --mail-type=END,FAIL\\
+\#SBATCH --time=02:02:00\\
+\#SBATCH --reservation=sam\_4\\
+module purge\\
+module load intel/2017.1.132 intel-mpi/2017.1.132 fhiaims/160328\_3\\
+export I\_MPI\_FABRICS\_LIST=tmi:I\_MPI\_FALLBACK=0\\
+%cp \$SLURM\_SUBMIT\_DIR/\$SLURM\_JOB\_NAME  \$SLURM\_SCRATCH\\
+%cd \$SLURM\_SCRATCH\\
+srun ~/bin/dg3d\_explicit\_mpi.mpi \$HOME/p6n32/run.inpt\\
+%mkdir \$SLURM\_SUBMIT\_DIR/\$SLURM\_JOB\_NAME\\
+
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - for GPU}}
+\#!/bin/bash \\
+\#SBATCH --job-name=gputf\\
+\#SBATCH --output=gputf.std.out\\
+\#SBATCH --error=gputf.std.err\\
+\#SBATCH --time=00:10:00\\
+\#SBATCH --nodes=1\\
+\#SBATCH --ntasks=1\\
+\#SBATCH --cluster=gpu\\             
+\#SBATCH --partition=gpu\\             
+\#SBATCH --gres=gpu:4\\
+\#if your executable was built with CUDA, be sure to load the CUDA module:\\
+\#module load cuda\\
+source tensorflow\_env.sh\\
+python tensorflowtest.py
+
+}
+
+\headerbox{Troubleshoot}{name=troubleshoot,column=3,row=0}{
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - ssh connection}}
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - jobs submission}}
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - software access}}
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - data access}}
+
+}
+%----------------------------------------------------------------
+%	REFERENCES  {name=objectives,column=0,row=0}
+%----------------------------------------------------------------
+%\headerbox{bb}{name=references,column=1,row=0}{}
+%----------------------------------------------------------------
+%	FUTURE RESEARCH
+%----------------------------------------------------------------
+%\headerbox{aa}{name=futureresearch,column=1,row=0}{}
+%----------------------------------------------------------------
+%	CONTACT INFORMATION
+%----------------------------------------------------------------
+%\headerbox{Contact Information}{name=contact,column=2,span=2,row=0}{}
+%----------------------------------------------------------------
+\end{poster}
+\end{document}
+
+
+SMPStandard
+        24 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell)
+        256 GB RAM
+        256 GB SSD & 1 TB SSD
+        10GigE
+SMPspecialty
+        2 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell)
+            256 GB RAM
+            256 GB SSD & 3 TB SSD
+            10GigE
+        2 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell)
+            512 GB RAM
+            256 GB SSD & 3 TB SSD
+            FDR Infiniband
+        1 node of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell)
+            256 GB RAM
+            256 GB SSD & 6 TB NVMe
+            GigE           
+ HTC
+        20 nodes of 16-core Intel Xeon E5-2630v3, 2.4GHz (Haswell-EP)
+        256 GB RAM
+        256 GB SSD
+        FDR Infiniband
+ MPIOP
+        96 nodes of 28-core Intel Xeon E5-2690 2.60 GHz (Broadwell)
+        64 GB RAM/node
+        256 GB SSD
+        100 Gb Omni-Path
+  MPIIB
+        32 nodes of 20-core Haswell (E5-2660 v3) 2.6 GHz (Haswell)
+        128 GB RAM/node
+        256 GB SSD
+        FDR InfiniBand
+    NTA
+	        7 nodes with 4 NVIDIA Titan X GPGPUs/node
+	        8 nodes with 4 NVIDIA GeForce GTX 1080 GPGPUs/node
+	        1 node with 2 NVIDIA K40 GPGPUs
+	         8 nodes of Intel KNL
+	     Legacy
+	 	20 nodes with 16-core Intel Ivy Bridge (E5-2650v2) 2.6 GHz, 64 GB of memory, 1 TB HDD, and FDR IB.
+	 	24 nodes with 16-core Intel Sandy Bridge (E5-2650) 2.6 GHz, 128 GB of memory, 1TB HDD, and FDR IB.
+	 	82 nodes with 16-core Intel Sandy Bridge (E5-2670) 2.6 GHz. 36 have 32 GB of RAM,1 TB HDD, connected by FDR IB. 36 have 64 GB of RAM, 1 TB HDD, connected by FDR IB. 8 have 64 GB of RAM, 2 TB HDD, connected by GigE. 2 have 128 GB of RAM, 3 TB HDD, connected by FDR IB.
+	 	23 nodes with 48-core AMD Magny Cours (6172) 2.1 GHz CPU. 2 nodes have 256 GB RAM, 18 have 128 GB RAM, and 3 have 64 GB RAM.
+	 	44 nodes with 12-core Intel Westmere (X5650) 2.67 GHz CPU and 48 GB RAM
+	 	110 nodes with 8-core Intel Nehalem CPU (2.93 GHz X5570, 2.67 GHz X5550, and 2.27 GHz L5520). 8 have 48 GB RAM, 56 have 12 GB RAM and 46 have 24 GB RAM.
+	 	54 nodes with 64-core AMD Interlagos (Opteron 6276) 2.3 GHz, QDR IB, 2TB HDD. 18 nodes have 256 GB RAM. 36 nodes have 128 GB of RAM.
+	 	4 nodes with 4 NVIDIA Tesla C2050 GPGPUs
+	 	4 nodes with 4 NVIDIA GTX Titan GPGPUs
+	 	1 node with 8-core Intel Sandy Bridge (E5-2643), 128 GB RAM, 3TB SSD
+	 1 node with 12-core Haswell (E5-2620 v3) 2.4 GHz, 128 GB RAM, 2 x 250 GB HDD, 2 x 800 GB SSD
+
