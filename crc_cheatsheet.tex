@@ -3,7 +3,7 @@
 %---------------------------------------------------
 
 \documentclass[landscape,a0paper,fontscale=0.285]{baposter} % Adjust the font scale/size here
-\title{CRC Cheat Sheet}
+\title{Cheat Sheet}
 \usepackage[brazilian]{babel}
 \usepackage[utf8]{inputenc}
 
@@ -66,9 +66,9 @@
 %----------------------------------------------------------------
 %	TITLE
 %----------------------------------------------------------------
-{\bf\textsc{CRC Cheat Sheet}\vspace{0.5em}} % Poster title
-{\textsc{\{ C R C \ \ \ \ \ C h e a t \ \ \ \ \ S h e e t\} \hspace{12pt}}}
-{\textsc{CRC Consultants \\ (University of Pittsburgh) \hspace{12pt}}} 
+{\bf\textsc{Cheat Sheet}\vspace{0.5em}} % Poster title
+{\textsc{C h e a t \ \ \ \ \ S h e e t \hspace{12pt}}}
+{\textsc{Center for Research \\ University of Pittsburgh \hspace{12pt}}} 
 
 %------------------------------------------------
 % ACCESS
@@ -234,9 +234,9 @@ borderColor=pittblue, headerColorOne=pittblue, headerColorTwo=pittgold, headerbo
 %----------------------------------------------------------------
 %	TITLE SECTION 
 %----------------------------------------------------------------
-{\bf\textsc{CRC Cheat Sheet}\vspace{0.5em}} % Poster title
-{\textsc{\{ C R C \ \ \ \ \ C h e a t \ \ \ \ \ S h e e t\} \hspace{12pt}}}
-{\textsc{CRC Consultants \\ (University of Pittsburgh) \hspace{12pt}}} 
+{\bf\textsc{Cheat Sheet}\vspace{0.5em}} % Poster title
+{\textsc{C h e a t \ \ \ \ \ S h e e t \hspace{12pt}}}
+{\textsc{Center for Research Computing \\ University of Pittsburgh \hspace{12pt}}} 
 
 \headerbox{Computation}{name=computation,column=0}{
 
@@ -260,6 +260,7 @@ CRC clusters use the SLURM scheduler. \\
 \texttt{PR} \dotfill   Preempted \\
 \texttt{NF} \dotfill   Node Failed \\
 \texttt{S} \dotfill   Suspended \\
+\texttt{CG} \dotfill  Completing \\
 \texttt{CD} \dotfill  Completed \\
 }
 
@@ -338,16 +339,18 @@ python tensorflowtest.py
 \headerbox{Troubleshoot}{name=troubleshoot,column=3,row=0}{
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - ssh connection}}
 \begin{itemize}\compresslist
+	\item If you are on a wireless network, make sure the VPN client is running
 	\item Use \texttt{ping} to check network connectivity to host
 	\item Use ssh in verbose mode with \texttt{-v} to identify possible causes
 \end{itemize}
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - jobs submission}}
 \begin{itemize}\compresslist
-	\item Sanity test the environment by submitting a minimal ``hello world" job
-	\item Check output of \texttt{squeue -t PD} and \texttt{smap} commands
+	\item Sanity test the environment by submitting a minimal "hello world" job
+	\item Check output of \texttt{squeue -t PD} and \texttt{smap} 
 \end{itemize}
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - software access}}
 \begin{itemize}\compresslist
+	\item Check if the software is available using \texttt{module spider} and \texttt{module avail}
 	\item Check if the module is loaded with \texttt{module list}
 \end{itemize}
 %\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - data access}}
