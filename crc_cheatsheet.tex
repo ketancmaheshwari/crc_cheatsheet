@@ -325,10 +325,11 @@ srun ~/bin/dg3d\_explicit\_mpi.mpi \$HOME/p6n32/run.inpt\\
 \#SBATCH --partition=gpu\\             
 \#SBATCH --gres=gpu:4\\
 \#if your executable was built with CUDA, be sure to load the CUDA module:\\
-\#module load cuda\\
-source tensorflow\_env.sh\\
+module purge
+module load cuda/8.0.44\\
+module load python/anaconda2.7-4.2.0\\
+module load gcc/5.4.0\\
 python tensorflowtest.py
-
 }
 
 \headerbox{Troubleshoot}{name=troubleshoot,column=3,row=0}{
