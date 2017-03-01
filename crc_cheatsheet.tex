@@ -77,19 +77,22 @@
 
 %--------------------------------------
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Request an Account}}
-\linebreak\\
-\texttt{http://core.sam.pitt.edu/apply}\\
-\linebreak
+\vspace{1 mm}
+\texttt{http://core.sam.pitt.edu/apply}
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Login}}
 HTC  \texttt{htc.sam.pitt.edu} \\
-SMP/OPA/NTA \texttt{h2p.crc.pitt.edu}\\ 
+SMP/OPA/NTA \texttt{h2p.crc.pitt.edu} OR \\ 
 \texttt{login0b.mpi.sam.pitt.edu}
 %--------------------------------------
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Storage}} 
 %Storage facilities
-ihome  \texttt{/ihome/grp} (backed up) \\
-mobydisk  \texttt{/mnt/mobydisk} (not backed up) \\
-ZFS  \texttt{/zfs1 \& /zfs2} (not backed up)
+ihome  \texttt{/ihome} \\
+mobydisk  \texttt{/mnt/mobydisk} \\
+ZFS  \texttt{/zfs1 \& /zfs2}
+\begin{itemize}\compresslist
+\item mobydisk and ZFS are not backed up 
+\item For ZFS access open help ticket
+\end{itemize}
 %\vspace{1.0em} % When there are two boxes, some whitespace may need to be added if the one on the right has more content
 }
 
@@ -102,7 +105,6 @@ ZFS  \texttt{/zfs1 \& /zfs2} (not backed up)
 \texttt{ssh htc.sam.pitt.edu}\\
 \texttt{ssh login0b.mpi.sam.pitt.edu}\\
 %------
-
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Move Data}}
 \texttt{scp afile.tgz htc.sam.pitt.edu:\textasciitilde/} \hfill  \# copy from localhost to cluster \\
 \texttt{scp htc.sam.pitt.edu:\textasciitilde/afile.tgz .} \hfill  \# copy from cluster to localhost \\
@@ -138,13 +140,14 @@ Search the website:\\ \texttt{http://core.sam.pitt.edu/search}
 \linebreak\\
 %------
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Documentation}}
+\vspace{1 mm}
 \texttt{http://core.sam.pitt.edu/node/6}\\
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Consultants Expertise}}
-Kim Wong: Bio Simulation, Agent-based Modeling, Physics-based Modeling \\
-Fangping Mu: Bioinformatics, Computational Biology, Computational Genomics \\
-Barry Moore: Quantum Chemistry, HPC \\
-Ketan Maheshwari: GPU Computing, Scientific Workflows, HPC  \\
-Shervin Sammak: Turbulent Combustion, Fluid Dynamics
+Kim Wong: Bio Simulation | Agent-based Modeling | Physics-based Modeling \\
+Fangping Mu: Bioinformatics | Computational Biology | Computational Genomics \\
+Barry Moore: Quantum Chemistry | HPC \\
+Ketan Maheshwari: GPU Computing | Scientific Workflows  \\
+Shervin Sammak: Turbulent Combustion | Fluid Dynamics
 %-----------------------------------
 }
 
@@ -154,9 +157,9 @@ Shervin Sammak: Turbulent Combustion, Fluid Dynamics
 \headerbox{Software}{name=software,column=0,row=1, below=access}{
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Applications}}
 \begin{itemize}\compresslist
-\item Chemistry: $\text{NAMD}^{s}$, {\color{red}$\text{VASP}^{s}$}, $\text{Amber}^{g}$, {\color{red}$\text{Molpro}^{s}$}, {\color{red}$\text{Turbomole}^{s}$}, $\text{CP2K}^{s}$, {\color{red}$\text{Gaussian}^{s}$}
-\item Bio: $\text{CLCbio}^{h}$, $\text{galaxy}^{h}$
-\item Material Sci: {\color{red}Material Studio}, Westpa
+\item Chemistry: $\text{NAMD}^{s}$, casino, lammps, $\text{Amber}^{g}$, {\color{red}$\text{Molpro}^{s}$}, {\color{red}$\text{Turbomole}^{s}$}, $\text{CP2K}^{s}$, {\color{red}$\text{Gaussian}^{s}$}
+\item Bio: $\text{CLCbio}^{h}$, $\text{galaxy}^{h}$, $\text{bowtie}^{h}$, $\text{samtools}^{h}$, $\text{picard}^{h}$, $\text{trinity}^{h}$
+\item Material Sci: {\color{red}Material Studio}, Westpa, {\color{red}abacus}, {\color{red}$\text{VASP}^{s}$}
 \end{itemize}
 
 %----Libraries and Programming-----------
@@ -164,7 +167,7 @@ Shervin Sammak: Turbulent Combustion, Fluid Dynamics
 \begin{itemize}\compresslist
 \item Compilers: GCC, Intel
 \item Programming: Python, R, Java, Matlab
-\item Libraries: Boost, FFT, $\text{tensorflow}^{h,g}$, mkl, hdf5
+\item Libraries: Boost, FFT, $\text{tensorflow}^{h,g}$, mkl, hdf5, $\text{bioconductor}^{h}$
 \end{itemize}
 
 %-------Others---------------------
@@ -210,7 +213,7 @@ Shervin Sammak: Turbulent Combustion, Fluid Dynamics
 }
 \headerbox{Charging Policy}{name=method,column=3, below=help}{
 Users are charged in terms of Service Units (SU) which depend on both memory and CPU usage.
-Details coming soon.
+\textbf{Details coming soon.}
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - CPU}}
 \linebreak \\
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Memory}}
@@ -334,9 +337,20 @@ python tensorflowtest.py
 
 \headerbox{Troubleshoot}{name=troubleshoot,column=3,row=0}{
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - ssh connection}}
+\begin{itemize}\compresslist
+	\item Use \texttt{ping} to check network connectivity to host
+	\item Use ssh in verbose mode with \texttt{-v} to identify possible causes
+\end{itemize}
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - jobs submission}}
+\begin{itemize}\compresslist
+	\item Sanity test the environment by submitting a minimal ``hello world" job
+	\item Check output of \texttt{squeue -t PD} and \texttt{smap} commands
+\end{itemize}
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - software access}}
-\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - data access}}
+\begin{itemize}\compresslist
+	\item Check if the module is loaded with \texttt{module list}
+\end{itemize}
+%\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - data access}}
 
 }
 %----------------------------------------------------------------
