@@ -171,8 +171,8 @@ Please send your feedback and suggestions for improvement to this document at \t
 %----Libraries and Programming-----------
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Libraries and Programming}}
 \begin{itemize}\compresslist
-\item Compilers: GCC, Intel
-\item Programming: Python, R, Java, Matlab
+\item Compilers: GCC$^{o,s,h}$, {\color{red}Intel$^{o,s}$}
+\item Programming: Python$^{h,s}$, R$^{h,s}$, Java$^{h,s}$, {\color{red}Matlab}
 \item Libraries: Boost$^{h,s}$, FFT$^{s}$, tensorflow$^{h,g}$, mkl$^{s}$, hdf5$^{s}$, bioconductor$^{h}$
 \end{itemize}
 
@@ -191,8 +191,8 @@ Please send your feedback and suggestions for improvement to this document at \t
 \headerbox{Hardware}{name=hardware,column=1, span=2, row=1, below=commoncommands}{
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - SMP}}
 \begin{itemize}\compresslist
-\item 24 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell), 256 G RAM, 256 G SSD \& 1 T SSD, 10GigE
-\item 2 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell), 256 G RAM, 256 G SSD \& 3 T SSD, 10GigE
+\item 24 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell), 256 G RAM, 256 G SSD \& 1 T SSD, 10 GigE
+\item 2 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell), 256 G RAM, 256 G SSD \& 3 T SSD, 10 GigE
 \item 2 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell), 512 G RAM, 256 G SSD \& 3 T SSD, FDR Infiniband
 \item 1 node of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell), 256 G RAM, 256 G SSD \& 6 T NVMe, GigE
 \end{itemize}
@@ -295,25 +295,25 @@ CRC clusters use the SLURM scheduler. \\
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - for HTC}}
 \#!/bin/bash\\
 \#SBATCH -N 1 \# Ensure that all cores are on one machine\\
-\#SBATCH --job-name=abf5\\
-\#SBATCH --output=abf5.out\\
-\#SBATCH -t 3-00:00 \# Runtime in D-HH:MM\\
+\#SBATCH --job-name=abf5 \#name of job\\
+\#SBATCH --output=abf5.out \#standard output goes to this file\\
+\#SBATCH -t 3-00:00 \# walltime in D-HH:MM\\
 \#SBATCH --cpus-per-task=16 \# Request that ncpus be allocated per process.\\
-\#SBATCH --mem=230g \# Memory pool for all cores (see also --mem-per-cpu)\\
+\#SBATCH --mem=230g \# Memory requested for all cores (see also --mem-per-cpu)\\
 module load HISAT2/2.0.3-beta\\
 hisat2-build -p 16 --ss hg38.ss --exon hg38.exon hg38.fa hg38\_tran\\
 
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - for SMP/MPI/OPA}}
 \#!/bin/bash\\
 \#SBATCH –job-name=p7n64\\
-\#SBATCH --nodes=2\\
+\#SBATCH --nodes=2 \#number of nodes requested\\
 \#SBATCH --tasks=56\\
 \#SBATCH --cpus-per-task=1\\
-\#SBATCH --partition=opa\\
-\#SBATCH --cluster=dist\\
-\#SBATCH --mail-user=shs159@pitt.edu\\
-\#SBATCH --mail-type=END,FAIL\\
-\#SBATCH --time=02:02:00\\
+\#SBATCH --partition=opa \#required \\
+\#SBATCH --cluster=dist \#required \\
+\#SBATCH --mail-user=shs159@pitt.edu \#send email to this address if ...\\
+\#SBATCH --mail-type=END,FAIL \# ... job ends or fails\\
+\#SBATCH --time=02:02:00 \#walltime in hh:mm:ss\\
 \#SBATCH --reservation=sam\_4\\
 module purge\\
 module load intel/2017.1.132 intel-mpi/2017.1.132 fhiaims/160328\_3\\
@@ -327,13 +327,13 @@ srun ~/bin/dg3d\_explicit\_mpi.mpi \$HOME/p6n32/run.inpt\\
 \#!/bin/bash \\
 \#SBATCH --job-name=gputf\\
 \#SBATCH --output=gputf.std.out\\
-\#SBATCH --error=gputf.std.err\\
+\#SBATCH --error=gputf.std.err \#standard error goes to this file\\
 \#SBATCH --time=00:10:00\\
 \#SBATCH --nodes=1\\
 \#SBATCH --ntasks=1\\
 \#SBATCH --cluster=gpu\\             
 \#SBATCH --partition=gpu\\             
-\#SBATCH --gres=gpu:4\\
+\#SBATCH --gres=gpu:4 \\
 \#if your executable was built with CUDA, be sure to load the CUDA module:\\
 module purge
 module load cuda/8.0.44\\
