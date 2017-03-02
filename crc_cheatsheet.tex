@@ -81,7 +81,7 @@
 \texttt{http://core.sam.pitt.edu/apply}
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Login}}
 HTC  \texttt{htc.sam.pitt.edu} \\
-SMP/OPA/NTA \texttt{h2p.crc.pitt.edu} OR \\ 
+SMP/OPA/NTA\\ \texttt{h2p.crc.pitt.edu} OR
 \texttt{login0b.mpi.sam.pitt.edu}
 %--------------------------------------
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Storage}} 
@@ -90,6 +90,8 @@ ihome  \texttt{/ihome} \\
 mobydisk  \texttt{/mnt/mobydisk} \\
 ZFS  \texttt{/zfs1 \& /zfs2}
 \begin{itemize}\compresslist
+\item your home directory on each of these storage systems is under your primary group name directory
+\item Use \texttt{id} command to find your primary group
 \item mobydisk and ZFS are not backed up 
 \item For ZFS access open help ticket
 \end{itemize}
@@ -105,10 +107,12 @@ ZFS  \texttt{/zfs1 \& /zfs2}
 \texttt{ssh htc.sam.pitt.edu}\\
 \texttt{ssh login0b.mpi.sam.pitt.edu}\\
 %------
-\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Move Data}}
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Data}}
 \texttt{scp afile.tgz htc.sam.pitt.edu:\textasciitilde/} \hfill  \# copy from localhost to cluster \\
 \texttt{scp htc.sam.pitt.edu:\textasciitilde/afile.tgz .} \hfill  \# copy from cluster to localhost \\
-\texttt{rsync -aP \$HOME/src /zfs1/1/sam/ketan} \hfill  \#copy src to zfs using rsync
+\texttt{rsync -aP \$HOME/src /zfs1/1/sam/ketan} \hfill  \#copy src to zfs using rsync\\
+\texttt{df -h /zfs1/2/kjordan/} \hfill \#find quota of a group's ZFS storage\\
+\texttt{lfs quota -g jpipas /mnt/mobydisk} \hfill \#find quota of a group's mobydisk storage
 
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - LMod: load and unload software}}
 \texttt{module spider fftw} \hfill  \# search for module named fftw \\
@@ -147,7 +151,9 @@ Kim Wong: Bio Simulation | Agent-based Modeling | Physics-based Modeling \\
 Fangping Mu: Bioinformatics | Computational Biology | Computational Genomics \\
 Barry Moore: Quantum Chemistry | HPC \\
 Ketan Maheshwari: GPU Computing | Scientific Workflows  \\
-Shervin Sammak: Turbulent Combustion | Fluid Dynamics
+Shervin Sammak: Turbulent Combustion | Fluid Dynamics\\
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Contact / Feedback}}
+Please send your feedback and suggestions for improvement to this document at \texttt{http://core.sam.pitt.edu/contact}
 %-----------------------------------
 }
 
