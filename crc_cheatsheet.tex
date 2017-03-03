@@ -294,28 +294,28 @@ CRC clusters use the SLURM scheduler. \\
 \headerbox{Example SLURM Scripts}{name=exampleslurm,column=1,span=2,row=0}{
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - for HTC}}
 \#!/bin/bash\\
-\#SBATCH -N 1 \# Ensure that all cores are on one machine\\
-\#SBATCH --job-name=abf5 \#name of job\\
-\#SBATCH --output=abf5.out \#standard output goes to this file\\
-\#SBATCH -t 3-00:00 \# walltime in D-HH:MM\\
-\#SBATCH --cpus-per-task=16 \# Request that ncpus be allocated per process.\\
-\#SBATCH --mem=230g \# Memory requested for all cores (see also --mem-per-cpu)\\
+\#SBATCH -N 1 \hfill\# Ensure that all cores are on one machine\\
+\#SBATCH --job-name=abf5 \hfill\#name of job\\
+\#SBATCH --output=abf5.out \hfill\#standard output goes to this file\\
+\#SBATCH -t 3-00:00 \hfill\# walltime in D-HH:MM\\
+\#SBATCH --cpus-per-task=16 \hfill\# Request that ncpus be allocated per process.\\
+\#SBATCH --mem=230g \hfill\# Memory requested for all cores (see also --mem-per-cpu)\\
 module load HISAT2/2.0.3-beta\\
 hisat2-build -p 16 --ss hg38.ss --exon hg38.exon hg38.fa hg38\_tran\\
 
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - for SMP/MPI/OPA}}
 \#!/bin/bash\\
 \#SBATCH –job-name=p7n64\\
-\#SBATCH --nodes=2 \#number of nodes requested\\
+\#SBATCH --nodes=2 \hfill\#number of nodes requested\\
 \#SBATCH --tasks=56\\
 \#SBATCH --cpus-per-task=1\\
-\#SBATCH --partition=opa \#required \\
-\#SBATCH --cluster=dist \#required \\
-\#SBATCH --mail-user=shs159@pitt.edu \#send email to this address if ...\\
-\#SBATCH --mail-type=END,FAIL \# ... job ends or fails\\
-\#SBATCH --time=02:02:00 \#walltime in hh:mm:ss\\
+\#SBATCH --partition=opa \hfill\# partition name is required \\
+\#SBATCH --cluster=dist \hfill\# cluster name is required \\
+\#SBATCH --mail-user=shs159@pitt.edu \hfill\#send email to this address if ...\\
+\#SBATCH --mail-type=END,FAIL \hfill\# ... job ends or fails\\
+\#SBATCH --time=02:02:00 \hfill\#walltime in hh:mm:ss\\
 \#SBATCH --reservation=sam\_4\\
-module purge\\
+module purge \hfill\#make sure the modules environment is sane \\
 module load intel/2017.1.132 intel-mpi/2017.1.132 fhiaims/160328\_3\\
 export I\_MPI\_FABRICS\_LIST=tmi:I\_MPI\_FALLBACK=0\\
 %cp \$SLURM\_SUBMIT\_DIR/\$SLURM\_JOB\_NAME  \$SLURM\_SCRATCH\\
@@ -327,15 +327,15 @@ srun ~/bin/dg3d\_explicit\_mpi.mpi \$HOME/p6n32/run.inpt\\
 \#!/bin/bash \\
 \#SBATCH --job-name=gputf\\
 \#SBATCH --output=gputf.std.out\\
-\#SBATCH --error=gputf.std.err \#standard error goes to this file\\
+\#SBATCH --error=gputf.std.err \hfill\#standard error goes to this file\\
 \#SBATCH --time=00:10:00\\
 \#SBATCH --nodes=1\\
 \#SBATCH --ntasks=1\\
 \#SBATCH --cluster=gpu\\             
 \#SBATCH --partition=gpu\\             
-\#SBATCH --gres=gpu:4 \\
-\#if your executable was built with CUDA, be sure to load the CUDA module:\\
-module purge
+\#SBATCH --gres=gpu:4 \\ \hfill\#use all four GPU devices on this node
+module purge\\
+\#if your executable was built with CUDA, load the CUDA module:\\
 module load cuda/8.0.44\\
 module load python/anaconda2.7-4.2.0\\
 module load gcc/5.4.0\\
