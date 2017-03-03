@@ -200,7 +200,7 @@ Please send your feedback and suggestions for improvement to this document at \t
 \begin{itemize}\compresslist
 %\item (IB) 32 nodes of 20-core Haswell (E5-2660 v3), 2.6 GHz (Haswell), 128 G RAM, 256 G SSD, FDR InfiniBand
 \item 96 nodes of 28-core Intel Xeon E5-2690 2.60 GHz (Broadwell), 64 G RAM, 256 G SSD, 100 Gb Omni-Path
-\item 8 nodes of 256-hyper-threaded-core Intel KNL Xeon Phi 7210 1.30 GHz, 94 G RAM
+\item 8 nodes of 256-core (hyper-threaded) Intel KNL Xeon Phi 7210 1.30 GHz, 94 G RAM
 \end{itemize}
 
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - HTC}}
@@ -244,8 +244,6 @@ borderColor=pittblue, headerColorOne=pittblue, headerColorTwo=pittgold, headerbo
 {\textsc{Center for Research Computing \\ University of Pittsburgh \hspace{12pt}}} 
 
 \headerbox{Computation}{name=computation,column=0}{
-
-\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Scheduler}}
 CRC clusters use the SLURM scheduler. \\
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Job Management}}
 \texttt{sinfo}\hfill \#view info about nodes\\
@@ -345,7 +343,7 @@ python tensorflowtest.py
 \headerbox{Troubleshoot}{name=troubleshoot,column=3,row=0}{
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - ssh connection}}
 \begin{itemize}\compresslist
-	\item If you are on a wireless network, make sure the VPN connection is established.
+	\item If you are on a wireless network, make sure the \textbf{VPN} connection is established.
 	\item Use \texttt{ping} to check network connectivity to host, eg. \texttt{ping htc.sam.pitt.edu}
 	\item Use ssh in verbose mode with \texttt{-v} to identify possible causes, eg. \texttt{ssh -v h2p.crc.pitt.edu}
 \end{itemize}
