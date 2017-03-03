@@ -333,7 +333,7 @@ srun ~/bin/dg3d\_explicit\_mpi.mpi \$HOME/p6n32/run.inpt\\
 \#SBATCH --ntasks=1\\
 \#SBATCH --cluster=gpu\\             
 \#SBATCH --partition=gpu\\             
-\#SBATCH --gres=gpu:4 \\ \hfill\#use all four GPU devices on this node
+\#SBATCH --gres=gpu:4 \hfill\#use all four GPU devices on this node\\
 module purge\\
 \#if your executable was built with CUDA, load the CUDA module:\\
 module load cuda/8.0.44\\
