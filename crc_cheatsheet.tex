@@ -31,7 +31,8 @@
 \usepackage{tikz} % Required for flow chart
 \usetikzlibrary{decorations.pathmorphing}
 \usetikzlibrary{shapes,arrows} % Tikz libraries required for the flow chart in the template
-
+\setlist[itemize]{leftmargin=*}
+\setlist[enumerate]{leftmargin=*}
 \newcommand{\compresslist}{ % Define a command to reduce spacing within itemize/enumerate environments, this is used right after \begin{itemize} or \begin{enumerate}
 \setlength{\itemsep}{1pt}
 \setlength{\parskip}{0pt}
@@ -86,9 +87,9 @@ SMP/OPA/NTA\\ \; \texttt{h2p.crc.pitt.edu} OR\\
 %--------------------------------------
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Storage}} 
 %Storage facilities
-ihome  \texttt{/ihome} \\
-mobydisk  \texttt{/mnt/mobydisk} \\
-ZFS  \texttt{/zfs1 \& /zfs2}
+ihome (75G per user) \; \texttt{/ihome} \\
+mobydisk (4T per \emph{group}) \; \texttt{/mnt/mobydisk} \\
+ZFS (5T per \emph{group}) \; \texttt{/zfs1 \& /zfs2}
 \begin{itemize}\compresslist
 \item your home directory on each of these storage systems is under your primary group name directory. It is backed up.
 \item Use the \texttt{id} command to find your primary group.
@@ -119,8 +120,7 @@ ZFS  \texttt{/zfs1 \& /zfs2}
 \texttt{module avail}  \hfill  \# list available modules \\
 \texttt{module list}   \hfill  \# list currently loaded modules \\
 \texttt{module load compiler/python/2.7.10-Anaconda-2.3.0}   \hfill  \# load a module named anaconda\\
-\texttt{module purge} \hfill  \# unload all modules \\
-
+\texttt{module purge} \hfill  \# unload all modules 
 %------
 }
 
