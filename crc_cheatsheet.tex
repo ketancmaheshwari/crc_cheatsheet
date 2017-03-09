@@ -81,14 +81,14 @@
 \vspace{1 mm}
 \texttt{http://core.sam.pitt.edu/apply}
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Login}}
-HTC \; \texttt{htc.sam.pitt.edu} \\
-SMP/OPA/NTA\\ \; \texttt{h2p.crc.pitt.edu}
+HTC \dotfill \texttt{htc.sam.pitt.edu} \\
+SMP/OPA/NTA \dotfill \texttt{h2p.crc.pitt.edu}
 %--------------------------------------
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Storage}} 
 %Storage facilities
-ihome (75G per user) \; \texttt{/ihome} \\
-mobydisk (4T per \emph{group}) \; \texttt{/mnt/mobydisk} \\
-ZFS (5T per \emph{group}) \; \texttt{/zfs1 \& /zfs2}
+ihome (75G per user) \dotfill \texttt{/ihome} \\
+mobydisk (4T per \emph{group}) \dotfill \texttt{/mnt/mobydisk} \\
+ZFS (5T per \emph{group}) \dotfill \texttt{/zfs1 \& /zfs2}
 \begin{itemize}\compresslist
 \item your home directory on each of these storage systems is under your primary group name directory. It is backed up.
 \item Use the \texttt{id} command to find your primary group.
@@ -102,24 +102,22 @@ ZFS (5T per \emph{group}) \; \texttt{/zfs1 \& /zfs2}
 \headerbox{Common Commands}{name=commoncommands, column=1,span=2, row=0}{
 %------
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Connect}}
-
-\texttt{ssh h2p.crc.pitt.edu}\\
-\texttt{ssh htc.sam.pitt.edu}\\
-\texttt{ssh login0b.mpi.sam.pitt.edu}\\
+\texttt{ssh h2p.crc.pitt.edu \#connect to the SMP, OPA and GPU clusters }\\
+\texttt{ssh htc.sam.pitt.edu \#connect to the HTC cluster }\\
 %------
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Data}}
-\texttt{scp afile.tgz htc.sam.pitt.edu:\textasciitilde/} \hfill  \# copy from your local computer to cluster \\
-\texttt{scp htc.sam.pitt.edu:\textasciitilde/afile.tgz .} \hfill  \# copy from cluster to your local computer \\
-\texttt{rsync -aP \$HOME/src /zfs1/1/sam/ketan} \hfill  \# copy src to zfs using rsync\\
-\texttt{df -h /zfs1/2/kjordan/} \hfill \# find quota of a group's ZFS storage\\
-\texttt{lfs quota -g jpipas /mnt/mobydisk} \hfill \# find quota of a group's mobydisk storage
-
+\texttt{scp afile.tgz htc.sam.pitt.edu:\textasciitilde/  \#copy from local computer to smp cluster }\\
+\texttt{scp htc.sam.pitt.edu:\textasciitilde/afile.tgz .  \#copy from htc to local computer} \\
+\texttt{rsync -aP \$HOME/src /zfs1/1/sam/ketan  \#copy src to zfs using rsync}\\
+\texttt{df -h /zfs1/2/kjordan/ \#find quota of a group's ZFS storage}\\
+\texttt{lfs quota -g jpipas /mnt/mobydisk \#find quota of a group's mobydisk storage}\\
+\linebreak
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - LMod: load and unload software}}
-\texttt{module spider fftw} \hfill  \# search for module named fftw \\
-\texttt{module avail}  \hfill  \# list available modules \\
-\texttt{module list}   \hfill  \# list currently loaded modules \\
-\texttt{module load compiler/python/2.7.10-Anaconda-2.3.0}   \hfill  \# load a module named anaconda\\
-\texttt{module purge} \hfill  \# unload all modules 
+\texttt{module spider fftw  \#search for module named fftw} \\
+\texttt{module avail  \#list available modules} \\
+\texttt{module list   \#list currently loaded modules} \\
+\texttt{module load compiler/python/2.7.10-Anaconda-2.3.0   \#load anaconda module}\\
+\texttt{module purge  \#unload all modules }
 %------
 }
 
