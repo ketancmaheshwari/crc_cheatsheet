@@ -247,7 +247,7 @@ CRC clusters use the SLURM scheduler. \\
 \texttt{sbatch job.sbatch}\hfill  \#submit a job \\
 \texttt{squeue -u \$(whoami)}\hfill \#check job status \\
 \texttt{scancel 12345}\hfill \#cancel job with id 12345\\
-\texttt{sshare}\hfill \#list the shares of associations\\
+\texttt{squeue -j 12345 -o \%S}\hfill \#expected or actual start time of job id 12345\\
 \texttt{salloc}\hfill \#get a Slurm job allocation \\
 \texttt{sprio 12345}\hfill \#view a job's priority\\
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Job Status Codes}}
