@@ -308,7 +308,8 @@ hisat2-build -p 16 -{}-ss hg38.ss -{}-exon hg38.exon hg38.fa hg38\_tran\\
 \#SBATCH -{}-cluster=dist \hfill\# cluster name is required \\
 \#SBATCH -{}-mail-user=shs159@pitt.edu \hfill\#send email to this address if ...\\
 \#SBATCH -{}-mail-type=END,FAIL \hfill\# ... job ends or fails\\
-\#SBATCH -{}-time=02:02:00 \hfill\# 2 hours and 2 mins walltime in hh:mm:ss format\\
+\#SBATCH -{}-time=4-00:00 \hfill\# 4 days walltime in dd-hh:mm format\\
+\#SBATCH -{}-qos=long \hfill\# required if walltime is greater than 3 days \\
 \#SBATCH -{}-reservation=sam\_4\\
 module purge \hfill\#make sure the modules environment is sane \\
 module load intel/2017.1.132 intel-mpi/2017.1.132 fhiaims/160328\_3\\
