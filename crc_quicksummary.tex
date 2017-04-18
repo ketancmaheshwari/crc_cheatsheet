@@ -241,15 +241,20 @@ borderColor=pittblue, headerColorOne=pittblue, headerColorTwo=pittgold, headerbo
 {\textsc{Center for Research Computing \\ University of Pittsburgh \hspace{12pt}}} 
 
 \headerbox{Computation}{name=computation,column=0}{
-CRC clusters use the SLURM scheduler. \\
+CRC clusters use the SLURM scheduler.\\
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Job Management}}
 \texttt{sinfo}\hfill \#view info about nodes\\
-\texttt{sbatch job.sbatch}\hfill  \#submit a job \\
-\texttt{squeue -u \$(whoami)}\hfill \#check job status \\
+\texttt{sbatch job.sbatch}\hfill  \#submit a job\\
+\texttt{squeue -u \$(whoami)}\hfill \#check job status\\
 \texttt{scancel 12345}\hfill \#cancel job with id 12345\\
-\texttt{squeue -j 12345 -o \%S}\hfill \#expected or actual start time of job id 12345\\
-\texttt{salloc}\hfill \#get a job's allocation \\
-\texttt{sprio 12345}\hfill \#view a job's priority\\
+%\texttt{squeue -j 12345 -o \%S}\hfill \#expected or actual start time of job id 12345\\
+\texttt{crc-sinfo.py}\hfill \#current hardware status\\
+\texttt{crc-spider.py}\hfill \#regular expression search for modules\\
+\texttt{crc-squeue.py --start}\hfill \#show job start time\\
+\texttt{crc-squeue.py --watch}\hfill \#watch job progress\\
+\texttt{crc-squeue.py --all}\hfill \#show all jobs\\
+\texttt{crc-usage.py}\hfill \#show your usage on cluster\\
+\texttt{crc-interactive.py --smp --time=1 --num-cpus=2}\hfill \#run interactive job on cluster
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Job Status Codes}}
 \texttt{PD} \dotfill  Pending \\
 \texttt{R}  \dotfill  Running \\
@@ -264,23 +269,6 @@ CRC clusters use the SLURM scheduler. \\
 \texttt{CD} \dotfill  Completed \\
 }
 
-\headerbox{Notes}{name=notes, below=computation, column=0,row=1}{
-\begin{itemize}\compresslist
-\item In software, superscripts indicate availability over a cluster: h=HTC, s=SMP, g=GPU, o=OPA, items in {\color{red}red} indicate licensed software
-\item To print this document on letter size paper use the printer's \textbf{fit to size} option.
-\item \LaTeX\: source on git: \texttt{github.com/\\ketancmaheshwari/crc\_cheatsheet}.
-\end{itemize}
-\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Acronyms}}
-\texttt{HTC} \dotfill  High Throughput Computing\\
-\texttt{OPA} \dotfill  Omni-Path \\
-\texttt{IB FDR} \dotfill  InfiniBand Fourteen Data Rate\\
-\texttt{GPU} \dotfill  Graphics Processing Unit \\
-\texttt{SMP} \dotfill  Shared Memory Processing \\
-\texttt{SSD} \dotfill  Solid State Drive \\
-\texttt{NTA} \dotfill  Non-Traditional Architecture \\
-\texttt{NVMe} \dotfill  Non-volatile Memory express \\
-\texttt{ZFS} \dotfill  Zettabyte File System
-}
 
 %------------------------------------------------
 % Example SLURM Script
@@ -364,6 +352,24 @@ srun echo "Hello \$(hostname)"
 \end{itemize}
 %\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - data access}}
 
+}
+
+\headerbox{Notes}{name=notes, below=troubleshoot, column=3,row=1}{
+\begin{itemize}\compresslist
+\item In software, superscripts indicate availability over a cluster: h=HTC, s=SMP, g=GPU, o=OPA, items in {\color{red}red} indicate licensed software
+\item To print this document on letter size paper use the printer's \textbf{fit to size} option.
+\item \LaTeX\: source on git: \texttt{github.com/\\ketancmaheshwari/crc\_cheatsheet}.
+\end{itemize}
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Acronyms}}
+\texttt{HTC} \dotfill  High Throughput Computing\\
+\texttt{OPA} \dotfill  Omni-Path \\
+\texttt{IB FDR} \dotfill  InfiniBand Fourteen Data Rate\\
+\texttt{GPU} \dotfill  Graphics Processing Unit \\
+\texttt{SMP} \dotfill  Shared Memory Processing \\
+\texttt{SSD} \dotfill  Solid State Drive \\
+\texttt{NTA} \dotfill  Non-Traditional Architecture \\
+\texttt{NVMe} \dotfill  Non-volatile Memory express \\
+\texttt{ZFS} \dotfill  Zettabyte File System
 }
 %----------------------------------------------------------------
 %	REFERENCES  {name=objectives,column=0,row=0}
