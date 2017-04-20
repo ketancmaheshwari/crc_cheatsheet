@@ -290,10 +290,9 @@ hisat2-build -p 16 -{}-ss hg38.ss -{}-exon hg38.exon hg38.fa hg38\_tran\\
 \#!/bin/bash\\
 \#SBATCH -{}-job-name=p7n64\\
 \#SBATCH -{}-nodes=2 \hfill\#number of nodes requested\\
-\#SBATCH -{}-tasks=56\\
-\#SBATCH -{}-cpus-per-task=1\\
+\#SBATCH -{}-ntasks-per-node=1\\
 \#SBATCH -{}-partition=opa \hfill\# partition name is required \\
-\#SBATCH -{}-cluster=dist \hfill\# cluster name is required \\
+\#SBATCH -{}-cluster=mpi \hfill\# cluster name is required \\
 \#SBATCH -{}-mail-user=shs159@pitt.edu \hfill\#send email to this address if ...\\
 \#SBATCH -{}-mail-type=END,FAIL \hfill\# ... job ends or fails\\
 \#SBATCH -{}-time=4-00:00 \hfill\# 4 days walltime in dd-hh:mm format\\
