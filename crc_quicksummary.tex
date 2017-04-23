@@ -250,11 +250,11 @@ CRC clusters use the SLURM scheduler.\\
 %\texttt{squeue -j 12345 -o \%S}\hfill \#expected or actual start time of job id 12345\\
 \texttt{crc-sinfo.py}\hfill \#current hardware status\\
 \texttt{crc-spider.py}\hfill \#regular expression search for modules\\
-\texttt{crc-squeue.py --start}\hfill \#show job start time\\
-\texttt{crc-squeue.py --watch}\hfill \#watch job progress\\
-\texttt{crc-squeue.py --all}\hfill \#show all jobs\\
+\texttt{crc-squeue.py -{}-start}\hfill \#show job start time\\
+\texttt{crc-squeue.py -{}-watch}\hfill \#watch job progress\\
+\texttt{crc-squeue.py -{}-all}\hfill \#show all jobs\\
 \texttt{crc-usage.py}\hfill \#show your usage on cluster\\
-\texttt{crc-interactive.py --smp --time=1 --num-cpus=2}\hfill \#run interactive job on cluster
+\texttt{crc-interactive.py -{}-smp -{}-time=1 -{}-num-cpus=2}\hfill \#run interactive job on cluster
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - Job Status Codes}}
 \texttt{PD} \dotfill  Pending \\
 \texttt{R}  \dotfill  Running \\
@@ -337,8 +337,8 @@ python tensorflowtest.py
 	\item Sanity test the environment by submitting a simple job, eg.\\
 \texttt{
 \#!/bin/bash\\
-\#SBATCH --output=test.out\\ 
-\#SBATCH --error=test.err\\ 
+\#SBATCH -{}-output=test.out\\ 
+\#SBATCH -{}-error=test.err\\ 
 \#SBATCH -t 00:10:00\\
 srun echo "Hello \$(hostname)"
 }
