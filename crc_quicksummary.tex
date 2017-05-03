@@ -246,7 +246,12 @@ CRC clusters use the SLURM scheduler.\\
 \texttt{sinfo}\hfill \#view info about nodes\\
 \texttt{sbatch job.sbatch}\hfill  \#submit a job\\
 \texttt{squeue -u \$(whoami)}\hfill \#check job status\\
-\texttt{scancel 12345}\hfill \#cancel job with id 12345\\
+\texttt{scancel 12345}\hfill \#cancel job with id 12345
+\linebreak
+Below is the command to see details of the nodes on a particular cluster. The key column is the CPUS(A/I/O/T) where,\\
+A = allocated, I = idle, O = other, T = total\\
+Single-core jobs should fit within nodes with non-zero I.\\
+\texttt{sinfo -{}-format="\%10n \%9P \%.14C \%.10T"}
 \linebreak
 \textbf{Note:} The above commands will show info about the \emph{SMP} cluster by default. To see info about other clusters, use the \texttt{\textbf{-M}} option with name of cluster, eg.\texttt{squeue \textbf{-M gpu} -u \$(whoami)}\\ 
 %\texttt{squeue -j 12345 -o \%S}\hfill \#expected or actual start time of job id 12345\\
