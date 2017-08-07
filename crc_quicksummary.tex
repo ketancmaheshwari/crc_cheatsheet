@@ -185,28 +185,40 @@ Please send your feedback and suggestions for improvement to this document at \t
 %	Hardware
 %----------------------------------------------------------------
 \headerbox{Hardware}{name=hardware,column=1, span=2, row=1, below=commoncommands}{
-\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - SMP}}
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - SMP$_{Standard}$ 10 GIGE NETWORK}}
 \begin{itemize}\compresslist
-\item 24 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell), 256 G RAM, 256 G SSD \& 1 T SSD, 10 GigE
+\item 100 nodes of 24-core Xeon Gold 6126 2.60 GHz (Skylake), 192 G RAM, 256 G \& 500 G SSD 
+\item 24 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell), 256 G RAM, 256 G SSD \& 1 T SSD
+\end{itemize}
+
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - SMP$_{Specialty}$}}
+\begin{itemize}\compresslist
 \item 2 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell), 256 G RAM, 256 G SSD \& 3 T SSD, 10 GigE
-\item 2 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell), 512 G RAM, 256 G SSD \& 3 T SSD, FDR Infiniband
+\item 2 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell), 512 G RAM, 256 G SSD \& 3 T SSD, FDR-IB
 \item 1 node of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell), 256 G RAM, 256 G SSD \& 6 T NVMe, GigE
 \end{itemize}
 
-\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - OPA}}
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - MPI$_{OP}$ OMNI-PATH NETWORK}}
 \begin{itemize}\compresslist
 %\item (IB) 32 nodes of 20-core Haswell (E5-2660 v3), 2.6 GHz (Haswell), 128 G RAM, 256 G SSD, FDR InfiniBand
-\item 96 nodes of 28-core Intel Xeon E5-2690 2.60 GHz (Broadwell), 64 G RAM, 256 G SSD, 100 Gb Omni-Path
-\item 8 nodes of 256-core (hyper-threaded) Intel KNL Xeon Phi 7210 1.30 GHz, 94 G RAM
+\item 96 nodes of 28-core Intel Xeon E5-2690 2.60 GHz (Broadwell), 64 G RAM, 256 G SSD, 100 Gb
 \end{itemize}
 
-\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - HTC}}
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - MPI$_{IB}$ INFINIBAND NETWORK}}
 \begin{itemize}\compresslist
-\item 20 nodes of 16-core Intel Xeon E5-2630v3, 2.4GHz (Haswell-EP), 256 G RAM, 256 G SSD, FDR Infiniband
+\item (IB) 32 nodes of 20-core Haswell (E5-2660 v3), 2.6 GHz (Haswell), 128 G RAM, 256 G SSD
+%\item 96 nodes of 28-core Intel Xeon E5-2690 2.60 GHz (Broadwell), 64 G RAM, 256 G SSD, 100 Gb Omni-Path
+\end{itemize}
+
+\colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - HTC INFINIBAND NETWORK}}
+\begin{itemize}\compresslist
+\item 4 nodes of 24-core Xeon Gold 6126 2.60 GHz (Skylake) 384 G RAM, 256 G \& 500 G SSD
+\item 20 nodes of 16-core Intel Xeon E5-2630v3, 2.4GHz (Haswell-EP), 256 G RAM, 256 G SSD
 \end{itemize}
 
 \colorbox[HTML]{cdb87d}{\makebox[\textwidth-2\fboxsep][l]{\bf - NTA}}
 \begin{itemize}\compresslist
+\item 8 nodes of 256-core (hyper-threaded) Intel KNL Xeon Phi 7210 1.30 GHz, 94 G RAM
 \item 7 nodes with 4 NVIDIA Titan X GPGPUs/node
 \item 8 nodes with 4 NVIDIA GeForce GTX 1080 GPGPUs/node
 \item 1 node with 2 NVIDIA K40 GPGPUs
@@ -394,55 +406,52 @@ srun echo "Hello \$(hostname)"
 \end{poster}
 \end{document}
 
-
 SMPStandard
+        100 nodes of 24-core Xeon Gold 6126 2.60 GHz (Skylake)
+            192 GB RAM
+            256 GB SSD & 500 GB SSD
+            10GigE
+
         24 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell)
-        256 GB RAM
-        256 GB SSD & 1 TB SSD
-        10GigE
-SMPspecialty
+            256 GB RAM
+            256 GB SSD & 1 TB SSD
+            10GigE
+    SMPspecialty
         2 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell)
-            256 GB RAM
+            256 GB RAM
             256 GB SSD & 3 TB SSD
             10GigE
         2 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell)
             512 GB RAM
             256 GB SSD & 3 TB SSD
-            FDR Infiniband
+            10GigE
         1 node of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell)
-            256 GB RAM
+            256 GB RAM
             256 GB SSD & 6 TB NVMe
-            GigE           
- HTC
+            10 GigE           
+    HTC
+        4 nodes of 24-core Xeon Gold 6126 2.60 GHz (Skylake)
+        384 GB RAM
+        256 GB SSD  & 500 GB SSD
+        FDR Infiniband
+
         20 nodes of 16-core Intel Xeon E5-2630v3, 2.4GHz (Haswell-EP)
         256 GB RAM
         256 GB SSD
         FDR Infiniband
- MPIOP
+   MPIOP
         96 nodes of 28-core Intel Xeon E5-2690 2.60 GHz (Broadwell)
         64 GB RAM/node
         256 GB SSD
         100 Gb Omni-Path
-  MPIIB
+    MPIIB
         32 nodes of 20-core Haswell (E5-2660 v3) 2.6 GHz (Haswell)
         128 GB RAM/node
         256 GB SSD
         FDR InfiniBand
     NTA
-	        7 nodes with 4 NVIDIA Titan X GPGPUs/node
-	        8 nodes with 4 NVIDIA GeForce GTX 1080 GPGPUs/node
-	        1 node with 2 NVIDIA K40 GPGPUs
-	         8 nodes of Intel KNL
-	     Legacy
-	 	20 nodes with 16-core Intel Ivy Bridge (E5-2650v2) 2.6 GHz, 64 GB of memory, 1 TB HDD, and FDR IB.
-	 	24 nodes with 16-core Intel Sandy Bridge (E5-2650) 2.6 GHz, 128 GB of memory, 1TB HDD, and FDR IB.
-	 	82 nodes with 16-core Intel Sandy Bridge (E5-2670) 2.6 GHz. 36 have 32 GB of RAM,1 TB HDD, connected by FDR IB. 36 have 64 GB of RAM, 1 TB HDD, connected by FDR IB. 8 have 64 GB of RAM, 2 TB HDD, connected by GigE. 2 have 128 GB of RAM, 3 TB HDD, connected by FDR IB.
-	 	23 nodes with 48-core AMD Magny Cours (6172) 2.1 GHz CPU. 2 nodes have 256 GB RAM, 18 have 128 GB RAM, and 3 have 64 GB RAM.
-	 	44 nodes with 12-core Intel Westmere (X5650) 2.67 GHz CPU and 48 GB RAM
-	 	110 nodes with 8-core Intel Nehalem CPU (2.93 GHz X5570, 2.67 GHz X5550, and 2.27 GHz L5520). 8 have 48 GB RAM, 56 have 12 GB RAM and 46 have 24 GB RAM.
-	 	54 nodes with 64-core AMD Interlagos (Opteron 6276) 2.3 GHz, QDR IB, 2TB HDD. 18 nodes have 256 GB RAM. 36 nodes have 128 GB of RAM.
-	 	4 nodes with 4 NVIDIA Tesla C2050 GPGPUs
-	 	4 nodes with 4 NVIDIA GTX Titan GPGPUs
-	 	1 node with 8-core Intel Sandy Bridge (E5-2643), 128 GB RAM, 3TB SSD
-	 1 node with 12-core Haswell (E5-2620 v3) 2.4 GHz, 128 GB RAM, 2 x 250 GB HDD, 2 x 800 GB SSD
+        7 nodes with 4 NVIDIA Titan X GPGPUs/node
+        8 nodes with 4 NVIDIA GeForce GTX 1080 GPGPUs/node
+        1 node with 2 NVIDIA K40 GPGPUs
+        8 nodes of Intel KNL
 
